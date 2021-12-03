@@ -68,15 +68,24 @@ $app['dao.link'] = $app->share(function ($app) {
     return $linkDAO;
 });
 
+$app['dao.rss'] = $app->share(function ($app) {
+    $RssDAO = new Watson\DAO\RssDAO($app['db']);
+    $RssDAO->setLinkDAO($app['dao.link']);
+    return $RssDAO;
+});
+
 
 // Register error handler
 $app->error(function (\Exception $e, $code) use ($app) {
-    switch ($code) {
+    switch ($e->getCode()) {
         case 403:
             $message = 'Access denied.';
             break;
         case 404:
             $message = 'The requested resource could not be found.';
+            break;
+        case 503:
+            $message = 'The service is unavailable at the moment.';
             break;
         default:
             $message = "Something went wrong.";
