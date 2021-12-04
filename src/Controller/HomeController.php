@@ -78,12 +78,16 @@ class HomeController {
         //build the rss text
         $rss = $app['dao.rss']->getRSS($number);
 
+        $rssText = $app['twig']->render('feed.rss.twig', array(
+            'rss' => $rss
+        ));
+
         //Create a http response
         $response = new Response();
         $response->headers->set("Content-type", "text/xml");
         //set status code and the rss text
         $response->setStatusCode(Response::HTTP_OK);
-        $response->setContent($rss);
+        $response->setContent($rssText);
         
         return $response;
     }

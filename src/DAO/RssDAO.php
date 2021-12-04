@@ -21,15 +21,15 @@ class RssDAO extends DAO
         //retrieve the number of links asked or 15 by default
         $links = is_null($number) ? $this->linkDAO->findLastLinks("15") : $this->linkDAO->findLastLinks($number);
 
-        //throw exception if no link where found
         if(!empty($links)){
            //build the rss object 
             $rss = $this->buildDomainObject($links);
         } else {
+            //throw exception if no link where found
             throw new \Exception('No link to display.', 503);
         }
 
-        return (string) $rss;
+        return $rss;
     }
 
      /**

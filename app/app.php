@@ -69,9 +69,9 @@ $app['dao.link'] = $app->share(function ($app) {
 });
 
 $app['dao.rss'] = $app->share(function ($app) {
-    $RssDAO = new Watson\DAO\RssDAO($app['db']);
-    $RssDAO->setLinkDAO($app['dao.link']);
-    return $RssDAO;
+    $rssDAO = new Watson\DAO\RssDAO($app['db']);
+    $rssDAO->setLinkDAO($app['dao.link']);
+    return $rssDAO;
 });
 
 

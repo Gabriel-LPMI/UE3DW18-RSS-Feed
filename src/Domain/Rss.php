@@ -167,7 +167,7 @@ class Rss
     private function getFileBeginning()
     {
         if(empty($this->fileBeginning)){
-            $this->fileBeginning[] = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+            $this->fileBeginning[] = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
             $this->fileBeginning[] = "<rss version=\"2.0\">";
             $this->fileBeginning[] = "    <channel>";
         }
@@ -202,5 +202,45 @@ class Rss
         }
 
         return $this->channel;
+    }
+
+    /**
+     * Get the value of homeURL
+     */ 
+    public function getHomeURL()
+    {
+        return $this->homeURL;
+    }
+
+    /**
+     * Get the value of description
+     */ 
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Get the value of title
+     */ 
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Get the value of links
+     */ 
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    /**
+     * Get the value of buildDate
+     */ 
+    public function getBuildDate()
+    {
+        return $this->buildDate;
     }
 }
