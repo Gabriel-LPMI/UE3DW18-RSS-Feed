@@ -21,11 +21,13 @@
 <div class="tab-content">
     <div class="tab-pane fade in active adminTable" id="links">
         <a href="{{ path('admin_link_add') }}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add link</button></a>
+        <hr>
         {% if links %}
         <div class="table-responsive">
-            <table class="table table-hover table-condensed">
+            <table id="example" class="table table-hover table-condensed">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Title</th>
                         <th>Author</th>
                         <th>Description</th>
@@ -34,6 +36,7 @@
                 </thead>
                 {% for link in links %}
                 <tr>
+                    <td>{{ link.id }}</td>
                     <td><a class="linkTitle" href="{{ path('link', { 'id': link.id }) }}">{{ link.title }}</a></td>
                     <td>{{ link.user.username }}</td>
                     <td>{{ link.desc | truncate(60) }}</td>
